@@ -142,7 +142,7 @@ d3.json("./static/data/yelp_test_set_business.json", function(yelp_data){
                 })
                 .xAxis().tickFormat(function(v) {return v;});   
     
-    console.log(startValueGroup.top(1)[0].value);
+    //console.log(startValueGroup.top(1)[0].value);
     
     lineChart.width(230)
             .height(200)
@@ -160,9 +160,11 @@ d3.json("./static/data/yelp_test_set_business.json", function(yelp_data){
                 .height(850)
                 .dimension(cityDimension)
                 .group(cityGroup)
+                .ordering(function(d) { return -d.value })
                 .renderLabel(true)
-                .colors(["#a60000","#ff0000", "#ff4040","#ff7373","#67e667","#39e639","#00cc00"])
-                .colorDomain([0, 0])
+                .colors(['#6baed6'])
+                .elasticX(true)
+                .labelOffsetY(10)
                 .renderlet(function (chart) {
                     bubbleChart.filter(chart.filter());
                 })
